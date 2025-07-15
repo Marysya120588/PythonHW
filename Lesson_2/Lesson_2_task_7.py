@@ -1,3 +1,3 @@
-my_list = list(range(18, 0, -4))
+my_liste = list(range(18, 0, -4))
 
-print(my_list)
+print(my_liste)
