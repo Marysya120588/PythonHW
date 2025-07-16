@@ -7,4 +7,4 @@ def square(a):
 a = float(input("Длина стороны квадрата: "))
 result = square(a)
 rounded_result = ceil(result)
-print(f'Округленная в большую сторону сумма - {rounded_result}')
+print(f'Округлённая в большую сторону площадь - {rounded_result}')
