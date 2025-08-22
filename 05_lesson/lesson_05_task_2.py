@@ -4,10 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.devtools.v137.fed_cm import click_dialog_button
 
 driver = webdriver.Chrome()
-driver.get("http://uitestingplayground.com/classattr")
-
-driver.find_element(By.CSS_SELECTOR, "button.btn").click()
-
-sleep(10)
-
+driver.get("http://uitestingplayground.com/dynamicid")
+sleep(5)
+blue_button = driver.find_element(By.CSS_SELECTOR, "button.btn-primary").click()
+sleep(5)
 driver.quit()

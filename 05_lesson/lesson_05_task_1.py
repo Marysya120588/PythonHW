@@ -8,7 +8,7 @@ driver.get("http://uitestingplayground.com/classattr")
 
 driver.find_element(By.CSS_SELECTOR, "button.btn-primary").click()
 
-sleep (10)
+sleep (5)
 
 
 driver.quit()
