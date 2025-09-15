@@ -1,50 +1,51 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
-class internet_shop:
-    def __init__(self.driver.url:str):
-        self._driver = webdriver
-        self._driver.get(url)
+def test_shopping():
+    driver = webdriver.Firefox()
 
-    def username(self.username.str):
-        self._driver.find_element(By.CSS_SELECTOR, "#username").send_keys(username)
+    try:
+        driver.get("https://www.saucedemo.com/")
 
+        # Авторизация
+        driver.find_element(By.ID, "user-name").send_keys("standard_user")
+        driver.find_element(By.ID, "password").send_keys("secret_sauce")
+        driver.find_element(By.ID, "login-button").click()
 
-    def password(self.password.str):
-        self._driver.find_element(By.CSS_SELECTOR, "#password").send_keys(password)
-        "https://www.saucedemo.com/")
+        # Добавление товаров
+        items = [
+            "Sauce Labs Backpack",
+            "Sauce Labs Bolt T-Shirt",
+            "Sauce Labs Onesie"
+        ]
 
-    def button(self.locator):
-        self._driver.find_element(By.CSS_SELECTOR, "locator").click()
+        for item in items:
+            driver.find_element(By.XPATH,
+                                f"//div[text()='{item}']/ancestor::div[@class='inventory_item']//button").click()
 
-    def post(self):
-        self._driver.find_element(By.CSS_SELECTOR, "#first-name").send_keys("Мария")
-        self._driver.find_element(By.CSS_SELECTOR, "#last-name").send_keys("Концевич")
-        self._driver.find_element(By.CSS_SELECTOR, "#postal-code").send_keys("142411")
-    def price(self):
-        txt = self._driver.find_element
-        (By.CSS_SELECTOR,"summary_total_label").text
-        return txt
-def test_swag_labs():
-    browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-magazine_swag_labs = internet_shop(browser,url = "https://www.saucedemo.com")
-magazine_swag_labs.username ("standard_user")
-magazine_swag_labs.password_("secret_sauce")
-magazine_swag_labs.button("#login_button")
+        # Оформление заказа
+        driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
+        driver.find_element(By.ID, "checkout").click()
 
-magazine_swag_labs.button('#add-to-cart-sauce-labs-backpack"')
-magazine_swag_labs.button('#add-to-cart-sauce-labs-bolt-t-shirt')
-magazine_swag_labs.button('#add-to-cart-sauce-onesie')
+        # Заполнение данных
+        checkout_data = {
+            "first-name": "Иван",
+            "last-name": "Петров",
+            "postal-code": "123456"
+        }
 
-magazine_swag_labs.button('#shopping_cart_container')
-magazine_swag_labs.button('#checkout')
+        for field, value in checkout_data.items():
+            driver.find_element(By.ID, field).send_keys(value)
 
-magazine_swag_labs.post()
-magazine_swag_labs.button('#continue')
+        driver.find_element(By.ID, "continue").click()
 
-summ = magazine_swag_labs.price()
-assert summ == "Total:$58.29"
-browser quit()
+        # Проверка суммы
+        total = WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, "summary_total_label")))
+        assert total.text == "Total: $58.29"
+
+    finally:
+        driver.quit()
