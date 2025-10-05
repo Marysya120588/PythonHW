@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from ShopPage import ShopPage
+from Lesson_7.shopPage.ShopPage import ShopPage
 
 
 @pytest.fixture

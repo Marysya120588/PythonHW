@@ -1,7 +1,6 @@
 import pytest
 from selenium import webdriver
-from calculator.CalculatorPage import CalculatorPage
-
+from Lesson_7.calculator.CalculatorPage import CalculatorPage
 
 @pytest.fixture
 def driver():
