@@ -1,0 +1,15 @@
+LOGIN = "marysyakontsevich120580@gmail.com"
+PASSWORD = "Marysya120580@!"
+NAME = "Skypro"
+COMPANY_ID = "fb7292bd-050b-48a7-9fff-dbee2b9a326a"
+USER_UUID = "df47c4b0-e7a9-474d-a20d-f72f1fe46491"
+ADMIN_ROLE = "worker"
+NEW_TITLE = "New_Project_Test"
+TEST_USER = {USER_UUID: ADMIN_ROLE}
+TITLE_GET_TEST = "Get_Project_Test"
+TITLE_EDIT_TEST = "Edit_Project_Test"
+EDITED_TITLE = "Edited_Project_Test"
+DELETED_STATUS = False
+NEW_TITLE_NEGATIVE = ""
+USER_UUID_NEGATIVE = "95bb52b4-fa9e-44bd-80b3-84a437b66df"
+TEST_USER_NEGATIVE = {USER_UUID_NEGATIVE: ADMIN_ROLE}
